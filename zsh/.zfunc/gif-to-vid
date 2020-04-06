@@ -1,0 +1,63 @@
+# commands for using ffmpeg to turn a gif into a video for Zoom backgrounds
+# this is probably a bad script, I'll have to update it when I get better at scripting
+
+gif-to-vid() {
+    while test $# -gt 0; do
+        case "$1" in
+            -h|--help)
+                echo "$0 [options] -i infile -o outfile"
+                echo ""
+                echo "options:"
+                echo "-h, --help    show help"
+                echo "-s, --slow    slow video to half speed"
+                echo "-i, --input   input file name"
+                echo "-o, --output  output file name"
+                echo ""
+                return 0
+            ;;
+            -s|--slow)
+                FSLOW="true"
+                shift
+            ;;
+            -i|--input)
+                shift
+                if test $# -gt 0; then
+                    FINPUT=$1
+                else
+                    echo "No input file specified."
+                    return 1
+                fi
+                shift
+            ;;
+            -o|--output)
+                shift
+                if test $# -gt 0; then
+                    FOUTPUT=$1
+                else
+                    echo "No output file specified."
+                    return 1
+                fi
+                shift
+            ;;
+            *)
+                break
+            ;;
+        esac
+    done
+
+    if [[ -n "$FSLOW" ]]; then
+        # slowing down the framerate of a .mp4
+        ffmpeg -y -i "$FINPUT" -filter:v "setpts=2.0*PTS" "temp.gif"
+        FINPUT="temp.gif"
+    fi
+
+    # converting a .gif to a .mp4
+    ffmpeg -y -i "$FINPUT" -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" "temp.mp4"
+
+    # rescaling .mp4
+    ffmpeg -y -i "temp.mp4" -vf scale=1920:1080 "$FOUTPUT"
+
+    # cleanup
+    rm "temp.gif"
+    rm "temp.mp4"
+}

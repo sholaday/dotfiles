@@ -1,33 +1,50 @@
 # dotfiles
 Back-up of configuration files.
 
-## notes
-### environment set up steps (for when I forget):
-* set terminal emulator theme
-* installed zsh and set it as the default shell
-* installed oh-my-zsh
-* installed powerline font
-* installed dircolors-solarized
-* set theme to agnoster in .zshrc
-* created custom oh-my-zsh patch plugin and enabled it
-* enabled tmux oh-my-zsh plugin and set configuration and theme
-* installed pathogen for vim and installed solarized colorscheme
-* installed ag
-* cloned fzf to .fzf and enabled oh-my-zsh plugin
-* symlinked fzf binary plugin to pathogen
-* installed fzf.vim to pathogen
-* installed VS Code, relevant extensions, and VS Code CLI
-* enabled VS Code oh-my-zsh plugin
+## todo
+* implement script for using `ag` with `fzf`
+* finish implementing scripts in `.zfunc`
+* update `.vimrc` to address `TODOs`
 
-### misc. notes:
-* pathogen is used by installing it into the `~/.vim/autoload` folder
-  and leaving `execute pathogen#infect()` at the top of your `.vimrc`
-* oh-my-zsh plugins typically handle all behaviors that you would need,
-  they're basically just a collection of aliases for the most part
-    * you can just install the necessary binary and then enable the plugin
-    * patch plugins need to be called in the $plugins section before regular plugins
+## set-up steps
+* install `stow`
+* clone this repository into your local machine
+* run `stow -t ~ <directory-name>` to symlink the configuration files in `<directory-name>` into your home directory
+* to pull down the  `git submodules`, run
+  ```
+  git submodule update --init
+  ```
+* for the `.gitalias` file, place `.gitalias` in `$HOME` and add the following to your global `.gitconfig`
+  ```
+  [include]
+      path = .gitalias
+  ```
 
-### .zshrc edits (try to keep defaults and make edits in custom):
-* ZSH_THEME="agnoster"
-* plugins=(custom git tmux vscode fzf)
+## `homebrew` packages
+Some `homebrew` packages I've installed:
+* ansible
+* awscli
+* cmatrix
+* docker
+* docker-compose
+* fastlane
+* ffmpeg
+* figlet
+* fzf
+* gnu-sed
+* gnu-time
+* gotop
+* htop
+* jq
+* libuv
+* lolcat
+* node
+* pandoc
+* rename
+* stow
+* the_silver_searcher
+* tmux
+* tree
+* wget
+* z
 

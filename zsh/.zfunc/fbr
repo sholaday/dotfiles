@@ -1,0 +1,18 @@
+# command for changing between local git branches using fzf
+fbr() {
+    git branch > /dev/null 2>&1
+
+    if [[ $? == 0 ]]; then
+        local branch=$(git branch | sed 's/.* //' | fzf)
+
+        if [[ -n "$branch" ]]; then
+            echo "Checking out $branch"
+            git checkout $branch
+        else
+            echo "Cancelling git checkout"
+        fi
+    else
+        echo "Not in a git repository"
+    fi
+}
+

@@ -1,0 +1,3 @@
+# command for using z with fzf
+cd "$(z | sed 's/^[0-9,.]* *//' | fzf +s --tac)"
+

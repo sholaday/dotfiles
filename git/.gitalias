@@ -1,0 +1,21 @@
+[alias]
+    l = log
+    lg = log --graph --abbrev-commit --pretty=oneline
+    s = status
+    b = branch
+    bd = branch -d
+    a = add
+    au = add -u
+    d = diff
+    p = pull
+    ps = push
+    c = commit
+    ca = commit --amend
+    ch = checkout
+    n = checkout -b
+    re = reset
+    reh = reset --hard
+    rb = rebase
+    rbi = rebase -i
+    rbo = rebase --onto
+    pr = remote update -p

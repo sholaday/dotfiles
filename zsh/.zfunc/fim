@@ -1,0 +1,8 @@
+# command for using ag with fzf to get file for vim
+fim() {
+    local file="$(ag -l $1 | fzf)"
+    if [[ -n "$file" ]]; then
+        vim "$file"
+    fi
+}
+

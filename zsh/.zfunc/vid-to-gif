@@ -1,0 +1,7 @@
+# script for converting a video to gif via ffmpeg
+# TODO add if statements checking arguments
+
+vid-to-gif() {
+    ffmpeg -i $1 -vf "fps=$3,scale=$4:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 $2
+}
+

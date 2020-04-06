@@ -1,0 +1,19 @@
+# TODO: include local branches that haven't yet been pushed up to remote
+# command for changing between all git branches using fzf
+fbra() {
+    git branch > /dev/null 2>&1
+
+    if [[ $? == 0 ]]; then
+        local branch=$(git branch --all | grep 'remotes/' | grep -v 'HEAD' | sed 's/.* remotes\/[^/]*\///' | fzf)
+
+        if [[ -n "$branch" ]]; then
+            echo "Checking out $branch"
+            git checkout $branch
+        else
+            echo "Cancelling git checkout"
+        fi
+    else
+        echo "Not in a git repository"
+    fi
+}
+
