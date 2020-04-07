@@ -13,6 +13,12 @@
     ca = commit --amend
     ch = checkout
     n = checkout -b
+    stl = stash list
+    stps = stash push
+    stpo = stash pop
+    sta = stash apply
+    std = stash drop
+    cl = clean -df
     re = reset
     reh = reset --hard
     rb = rebase
