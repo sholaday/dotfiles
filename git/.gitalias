@@ -9,6 +9,7 @@
     d = diff
     p = pull
     ps = push
+    psn = push -u origin
     c = commit
     ca = commit --amend
     ch = checkout
