@@ -1,0 +1,57 @@
+" map leader to spacebar
+map <Space> <leader>
+
+" turn off error bells
+set noerrorbells visualbell t_vb=
+
+" move between windows just using control + key
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" set join to U and navigate tabs with J and K
+nnoremap U J
+nnoremap K gt
+nnoremap J gT
+
+" set _ to remove highlighting
+nnoremap _ :noh<CR>
+
+" window command bindings
+map <leader>pp :action PinActiveTab<CR>
+map <leader>ww :w<CR>
+map <leader>wq :wq<CR>
+map <leader>qq :q<CR>
+map <leader>qa :action CloseAllUnpinnedEditors<CR>
+
+" delete marks binding
+map <leader>dm :delm<Space>
+
+" enable hybrid line numbers
+set number relativenumber
+
+" ignore search case and highlight search results
+set ignorecase hlsearch
+
+" use idea bookmarks and intelligent join
+set ideamarks ideajoin
+
+" idea bindings for maximizing code windows
+map <leader>fs :action RestoreDefaultLayout<CR>
+
+" idea bindings for running, debugging, and stopping
+map <leader>rb :action Run<CR>
+map <leader>db :action Debug<CR>
+map <leader>sb :action Stop<CR>
+
+" idea bindings for code searching
+map <leader>ag :action SearchEverywhere<CR>
+map <leader>ff :action RecentFiles<CR>
+
+" idea bindings for code navigation
+map <leader>od :action GotoDeclaration<CR>
+map <leader>oi :action GotoImplementation<CR>
+map <leader>of :action FileStructurePopup<CR>
+map <leader>ou :action FindUsages<CR>
+

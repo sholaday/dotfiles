@@ -37,6 +37,9 @@ nnoremap U J
 nnoremap K gt
 nnoremap J gT
 
+" set _ to remove highlighting
+nnoremap _ :noh<CR>
+
 " indenting
 " TODO figure out how to set autoindent properly
 filetype plugin indent on
@@ -65,6 +68,9 @@ map <leader>ww :w<CR>
 map <leader>qq :q<CR>
 map <leader>qa :qa<CR>
 map <leader>wq :wq<CR>
+
+" delete marks binding
+map <leader>dm :delm<Space>
 
 " color stuff
 syntax on
