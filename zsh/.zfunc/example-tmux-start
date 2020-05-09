@@ -1,0 +1,23 @@
+# example command for starting up dev environment in tmux
+example-tmux-start() {
+    # session name
+    local session="dev"
+    local exists="$(tmux list-sessions | grep $session)"
+
+    if [[ -z "$exists" ]]; then
+        # start new session with our name
+        tmux new-session -d -s $session
+
+        # create and setup window for dev project
+        tmux rename-window -t 0 'dev'
+        tmux send-keys -t 'dev' 'cd /Users/dev/Documents/projects/myproject' C-m
+
+        # create and setup window for notes
+        tmux new-window -t $session:1 -n 'notes'
+        tmux send-keys -t 'notes' 'cd /Users/dev/Documents/notes' C-m
+    fi
+
+    # attach session to the main window
+    tmux attach-session -t $session:0
+}
+
