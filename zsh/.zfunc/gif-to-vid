@@ -58,6 +58,6 @@ gif-to-vid() {
     ffmpeg -y -i "temp.mp4" -vf scale=1920:1080 "$FOUTPUT"
 
     # cleanup
-    rm "temp.gif"
-    rm "temp.mp4"
+    rm "temp.gif" > /dev/null 2>& 1
+    rm "temp.mp4" > /dev/null 2>& 1
 }
