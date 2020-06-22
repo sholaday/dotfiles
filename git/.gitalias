@@ -4,6 +4,8 @@
     s = status
     b = branch
     bd = branch -d
+    bD = branch -D
+    m = merge
     a = add
     au = add -u
     d = diff
