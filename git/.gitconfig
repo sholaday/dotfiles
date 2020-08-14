@@ -3,12 +3,12 @@
 [user]
     name = sholaday
     email = sholaday@users.noreply.github.com
+[core]
+	editor = vim
 [diff]
     tool = vimdiff
 [difftool]
     prompt = false
-[credential]
-    helper = osxkeychain
 [include]
     path = .gitalias
 

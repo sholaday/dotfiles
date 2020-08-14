@@ -1,6 +1,11 @@
 # add scripts directory to PATH
 FPATH="$HOME/.zfunc:$FPATH"
 
+# turn off all beeps
+unsetopt BEEP
+# turn off autocomplete beeps
+# unsetopt LIST_BEEP
+
 # use the zsh completion system
 autoload -Uz compinit && compinit
 
@@ -38,12 +43,15 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 # for using `z`
-. /usr/local/etc/profile.d/z.sh
+. ~/.local/sh/z.sh
 
 # aliases for color
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls -G'
+
+# aliases for usability
+alias xclip='xclip -selection clipboard'
 
 # add color to man output
 man() {

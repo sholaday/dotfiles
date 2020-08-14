@@ -22,29 +22,10 @@ Back-up of configuration files.
 
 ## `homebrew` packages
 Some `homebrew` packages I've installed:
-* ansible
-* awscli
-* cmatrix
-* docker
-* docker-compose
-* fastlane
-* ffmpeg
-* figlet
-* fzf
-* gnu-sed
-* gnu-time
-* gotop
-* htop
-* jq
-* libuv
-* lolcat
-* node
-* pandoc
-* rename
-* stow
-* the_silver_searcher
-* tmux
-* tree
-* wget
-* z
+```
+ansible, awscli, cmatrix, docker, docker-compose,
+fastlane, ffmpeg, figlet, fzf, gnu-sed, gnu-time,
+gotop, htop, jq, libuv, lolcat, node, pandoc, rename,
+stow, the_silver_searcher, tmux, tree, wget, z
+```
 
