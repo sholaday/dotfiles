@@ -4,11 +4,12 @@
     s = status
     b = branch
     bd = branch -d
-    bD = branch -D
+    bdd = branch -D
     m = merge
     a = add
     au = add -u
-    d = diff
+    d = diff --ignore-space-change
+    dt = difftool
     p = pull
     ps = push
     psn = push -u origin

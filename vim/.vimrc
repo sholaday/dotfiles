@@ -102,6 +102,23 @@ map <leader>fg :GFiles<CR>
 map <leader>fb :Buffers<CR>
 map <leader>ag :Ag<Space>
 
+" ignore whitespace while in diff mode
+if &diff
+  set diffopt+=iwhite
+  set diffexpr=DiffW()
+  function DiffW()
+    let opt = ""
+    if &diffopt =~ "icase"
+      let opt = opt . "-i "
+    endif
+    if &diffopt =~ "iwhite"
+      let opt = opt . "-w " " swapped vim's -b with -w
+    endif
+    silent execute "!diff -a --binary " . opt .
+      \ v:fname_in . " " . v:fname_new .  " > " . v:fname_out
+  endfunction
+endif
+
 " limit ALE to only use OmniSharp
 let g:ale_linters = { 'cs': ['OmniSharp'] }
 
