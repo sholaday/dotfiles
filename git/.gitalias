@@ -1,6 +1,8 @@
 [alias]
     l = log
+    ln = log --name-only
     lg = log --graph --abbrev-commit --pretty=oneline
+    lgn = log --graph --abbrev-commit --pretty=oneline --name-only
     s = status
     b = branch
     bd = branch -d
@@ -29,3 +31,4 @@
     rbi = rebase -i
     rbo = rebase --onto
     pr = remote update -p
+
