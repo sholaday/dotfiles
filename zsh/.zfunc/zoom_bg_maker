@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+
+function print_usage() {
+     echo "Usage: zoom_bg_maker"
+     echo
+     echo "-h, --help             show help"
+     echo "-u, --youtube-url      YouTube video URL"
+     echo "-f, --format-code      format code for YouTube video"
+     echo "-s, --start-timestamp  start timestamp"
+     echo "-e, --end-timestamp    end timestamp"
+     echo "-p, --speed            optional: slow down or speed up video"
+     echo "-o, --output-filename  name of file to output"
+     echo
+     echo "Note: must be used with .webm format code and make an mp4 file."
+     echo
+     echo "e.g.: zoom_bg_maker.sh -u 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' -f 247 -s 00:00:01 -e 00:00:04 -p 2.0 -o rick_rolled.mp4"
+}
+
+function exit_with_usage() {
+    echo $1
+    echo
+    print_usage
+    should_exit=1
+}
+
+unset should_exit
+
+# loop through and process arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -h|--help)
+       print_usage
+       return 0;;
+    -u|--youtube-url)
+      youtube_url="$2"
+      shift
+      shift;;
+    -f|--format-code)
+      format_code="$2"
+      shift
+      shift;;
+    -s|--start-timestamp)
+      start_time="$2"
+      shift
+      shift;;
+    -e|--end-timestamp)
+      end_time="$2"
+      shift
+      shift;;
+    -o|--output-filename)
+      output_filename="$2"
+      shift
+      shift;;
+    -p|--speed)
+      speed="$2"
+      shift
+      shift;;
+    *)
+      exit_with_usage "Invalid parameter: $1"
+      break;;
+  esac
+done
+
+if [[ -z "$should_exit" &&  (-z "$youtube_url" || -z "$format_code" \
+  || -z "$start_time" || -z "$end_time" || -z "$output_filename" ) ]]; then
+  exit_with_usage "Missing arguments!"
+fi
+
+if [ -n "$should_exit" ]; then
+  return $should_exit
+fi
+
+# download YouTube video as .webm
+youtube-dl -f $format_code -o _input.webm "$youtube_url"
+
+# trim a webm from start seconds in to end seconds in (using timestamps and with re-encoding)
+ffmpeg -i _input.webm -ss $start_time -to $end_time -c:v libvpx-vp9 -crf 20 -b:v 0 -c:a copy _trimmed.webm
+
+# boomerang a webm (no audio)
+ffmpeg -i _trimmed.webm -filter_complex "[0:v]reverse,fifo[r];[0:v][r] concat=n=2:v=1 [v]" -map "[v]" _boomeranged.webm
+
+# slow down the webm
+if [ -n "$speed" ]; then
+  ffmpeg -i _boomeranged.webm -filter:v "setpts=$speed*PTS" _slowed.webm
+  mv _slowed.webm _boomeranged.webm
+fi
+
+# convert webm to mp4
+ffmpeg -i _boomeranged.webm -crf 20 $output_filename
+
+# cleanup
+rm _input.webm _trimmed.webm _boomeranged.webm
+
+echo "Done!"
+
