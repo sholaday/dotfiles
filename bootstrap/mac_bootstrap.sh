@@ -29,6 +29,12 @@ brew install tmux
 brew install tree
 brew install wget
 
+echo "----------------------"
+echo "Starting pip boostrap!"
+echo "----------------------"
+
+pip install ffsubsync
+
 echo "-------------------------------"
 echo "Finished installing packages!"
 echo "z should be installed manually."

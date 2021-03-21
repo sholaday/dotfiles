@@ -59,6 +59,12 @@ pacman -S xsel
 pacman -S youtube-dl
 pacman -S zathura
 
+echo "----------------------"
+echo "Starting pip boostrap!"
+echo "----------------------"
+
+pip install ffsubsync
+
 echo "-------------------------------------"
 echo "Finished installing packages!"
 echo "Godot, aseprite, z, and PICO-8 should"
