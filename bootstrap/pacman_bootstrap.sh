@@ -16,6 +16,7 @@ pacman -S clamav
 pacman -S clamtk
 pacman -S cmake
 pacman -S cmatrix
+pacman -S code
 pacman -S coreutils
 pacman -S diffutils
 pacman -S discord

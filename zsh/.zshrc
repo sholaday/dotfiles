@@ -1,6 +1,9 @@
 # add scripts directory to PATH
 FPATH="$HOME/.zfunc:$FPATH"
 
+# don't add commands preceded by whitespace to zsh's history
+setopt HIST_IGNORE_SPACE
+
 # turn off all beeps
 unsetopt BEEP
 # turn off autocomplete beeps
