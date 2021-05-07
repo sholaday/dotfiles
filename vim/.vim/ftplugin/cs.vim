@@ -1,7 +1,7 @@
 " cs specific indenting
-set tabstop=4 " use 4 spaces for tab size
+set tabstop=4    " use 4 spaces for tab size
 set shiftwidth=4 " when indenting with '>', use 4 spaces width
-set expandtab " use spaces for tab key
+set expandtab    " use spaces for tab key
 
 " use the installed version of mono instead of the roslyn embedded one
 let g:OmniSharp_server_use_mono = 1
