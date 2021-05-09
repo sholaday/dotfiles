@@ -1,0 +1,8 @@
+! 2020-11-03 https://www.facebook.com
+www.facebook.com##.oyrvap6t.b6rwyo50.fjf4s8hc.f7vcsfb0.btwxx1t3.owycx6da.gs1a9yip.taijpn5t.hpfvmrgz.buofh1pr.pmt1y7k9.g5gj957u.j83agx80.du4w35lb.l9j0dhe7.rq0escxv
+
+! 2020-11-03 https://www.youtube.com
+www.youtube.com##.ytd-two-column-browse-results-renderer.style-scope > .ytd-rich-grid-renderer.style-scope
+www.youtube.com##ytd-watch-next-secondary-results-renderer.ytd-watch-flexy.style-scope > .ytd-watch-next-secondary-results-renderer.style-scope
+www.youtube.com##.ytp-show-tiles.videowall-endscreen.ytp-player-content.html5-endscreen
+
