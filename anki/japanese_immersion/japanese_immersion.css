@@ -1,0 +1,86 @@
+:root {
+  --main-color: #EBDBB2;
+  --main-highlight-color: #98971A;
+  --main-bg-color: #282828;
+  --tag-color: #FFFFFF;
+  --tag-bg-color: #458588;
+  --link-color: #83A598;
+  --play-button-color: #FFFFFF;
+  --play-button-bg-color: #345858;
+}
+
+.card, .card.nightMode {
+  font-family: arial;
+  font-size: 20px;
+  text-align: center;
+  color: var(--main-color);
+  background-color: var(--main-bg-color);
+}
+.jp { font-size: 35px }
+.win .jp { font-family: "MS Mincho", "ＭＳ 明朝"; }
+.mac .jp { font-family: "Hiragino Mincho Pro", "ヒラギノ明朝 Pro"; }
+.linux .jp { font-family: "Kochi Mincho", "東風明朝"; }
+.mobile .jp { font-family: "Hiragino Mincho ProN"; }
+
+ruby rt { visibility: hidden; }
+.front ruby rt { visibility: visible; }
+
+.tags {
+  font-family: arial;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  text-transform: lowercase;
+  padding: 3px 3px 3px 3px;
+  color: var(--tag-color);
+  background-color: var(--tag-bg-color);
+  display: inline-block;
+  border-radius: 1px;
+}
+
+.definition {
+  font-size: 24px;
+  margin-top: 16px;
+}
+
+.extra {
+  font-size: 24px; 
+  margin-top: 16px;
+}
+
+.image {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  align-content: space-between;
+  justify-content: space-evenly;
+}
+.image > img {
+  max-width: 60%;
+  border-radius: 4px;
+}
+
+/* links */
+a { color: var(--link-color); }
+
+/* header */
+header { padding-bottom: 20px }
+header > div:not(:last-child) { margin-right: 10px; }
+
+/* footer and links */
+footer {font-size: 16px; text-align: center; }
+footer>a { color: var(--link-color); }
+
+/* japanese sentence */
+.jpsentence { font-size: 34px; }
+
+/* pc replay button */
+.replay-button { top: -.125em;  position: relative; }
+.replay-button svg {
+  height: 1em;
+  width: 1em;
+}
+.replay-button svg path { fill: var(--play-button-color); }
+.replay-button svg circle { fill: var(--play-button-bg-color); }
+

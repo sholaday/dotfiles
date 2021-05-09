@@ -1,0 +1,16 @@
+{
+    "dstFields": [
+        "Sentence Furigana",
+        "Reading"
+    ],
+    "furiganaSuffix": " (furigana)",
+    "noteTypes": [
+        "japanese"
+    ],
+    "srcFields": [
+        "Sentence",
+        "Expression",
+        "Kanji"
+    ]
+}
+

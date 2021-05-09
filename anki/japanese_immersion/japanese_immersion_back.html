@@ -1,0 +1,68 @@
+<div class="front">
+  {{FrontSide}}
+</div>
+
+<br><hr id="answer"><br>
+
+<div class="definition">
+  {{Vocab Audio}}
+  {{#Vocab}}<b>{{text:Vocab Reading}}【{{text:Vocab}}】</b>{{/Vocab}}
+  {{text:English Definition}}
+</div>
+
+{{#Japanese Definition}}
+  <div class="definition">{{Japanese Definition}}</div>
+{{/Japanese Definition}}
+
+{{#Pitch Accent Graph}}
+  <div class="definition">{{Pitch Accent Graph}}</div><br>
+{{/Pitch Accent Graph}}
+
+{{#Context Image}}
+  <div class="image" >{{Context Image}}</div><br>
+{{/Context Image}}
+
+{{#Frequency Number}}
+  <div class="tags">{{Frequency Number}}</div><br>
+{{/Frequency Number}}
+
+{{#Translation}}
+  <div class="extra" lang="en">
+    {{hint:Translation}}
+  </div>
+{{/Translation}}
+
+{{#Mnemonic}}
+  <div class="extra" lang="en">
+    {{hint:Mnemonic}}
+  </div>
+{{/Mnemonic}}
+
+<br><hr><br>
+
+<footer>
+  {{#Vocab}}
+    <a href="https://www.wanikani.com/vocabulary/{{text:Vocab}}"
+       title="Vocab on WaniKani">WaniKani</a> |
+    <a href="http://www.weblio.jp/content/{{text:Vocab}}"
+       title="Vocab on Weblio">Weblio</a> |
+  {{/Vocab}}
+  {{#Sentence}}
+    <a href="https://jisho.org/search?keyword={{text:Sentence}}"
+       title="Sentence on Jisho">Jisho</a> |
+    <a href="https://www.deepl.com/translator#ja/en/{{text:Sentence}}"
+       title="Translation on DeepL">DeepL</a>
+  {{/Sentence}}
+</footer>
+
+<script>
+  function removePitchBrackets() {
+    const tags = document.getElementById("pitchnum");
+    if (tags !== null) {
+      tags.innerHTML = tags.innerHTML.replace(/(\[(?=\d)|(?<=\d)\])/g, "");
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', removePitchBrackets(), false);  
+</script>
+

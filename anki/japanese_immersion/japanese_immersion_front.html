@@ -1,0 +1,48 @@
+{{#Tags}}
+  <header>
+    <div class="tags">
+      {{Tags}}
+    </div>
+  </header>
+{{/Tags}}
+
+<div class="jpsentence" lang="ja">
+  {{Context Audio}}
+  {{#Sentence Furigana}}{{furigana:Sentence Furigana}}{{/Sentence Furigana}}
+  {{^Sentence Furigana}}{{Sentence}}{{/Sentence Furigana}}
+</div>
+
+<script>
+  /* paint the question word */
+  function paintTargetWord(className) {
+    for (sentence of document.getElementsByClassName(className)) {
+      for (word of sentence.getElementsByTagName("b")) {
+        word.style.color = "var(--main-highlight-color)";
+        word.style.fontWeight = "normal";
+      }
+    }
+  }
+
+  /* split tags into separate spans */
+  function splitTags() {
+    header = document.getElementsByTagName("header")[0];
+    if (!header) return;
+
+    header.innerHTML = "";
+    tags = "{{Tags}}".split(" ");
+
+    for (tag of tags) {
+      if (tag.length < 1) continue;
+
+      tag_elem = document.createElement("div");
+      tag_elem.className = "tags";
+      tag_elem.innerHTML = tag;
+      header.appendChild(tag_elem);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', paintTargetWord("jpsentence"), false);
+  document.addEventListener('DOMContentLoaded', paintTargetWord("definition"), false);
+  document.addEventListener('DOMContentLoaded', splitTags(), false);
+</script>
+
