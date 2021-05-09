@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# TODO: check dependencies at start of script (programs and tessdata)
+# TODO: remove textord_tabfind_vertical_horizontal_mix from trained data
+# TODO: find out how to strip special character (null?) at end of output
+# TODO: install and use textcleaner
+# TODO: bind key to running this script
+# TODO: set-up option for continuous mode
+
+maim -s |
+tesseract stdin stdout \
+    -l jpn \
+    --tessdata-dir ~/.local/share/capture2text_tessdata |
+tr -d ' ' |
+xclip -selection clipboard
+
